@@ -45,7 +45,6 @@
                                     $option .= '</a>';
                                     echo '<tr><td>' . $option . '</td></tr>';
                                 }
-                                // echo 'title : ' . $page_children;
                             ?>           
                         </tbody>
                     </table>
