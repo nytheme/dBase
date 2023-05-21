@@ -36,8 +36,8 @@ class Model {
 			case 'register':
 				$this->registration();
 				break;
-			case 'revise':
-				$this->revision();
+			case 'edit':
+				$this->edit();
 				break;
 		}
 	}
@@ -45,7 +45,7 @@ class Model {
 	//単語登録
 	private function registration() {
 		//登録単語の重複チェック
-		$pre_sql = 'SELECT word FROM words WHERE word = "'.$_POST['word'].'"';
+		$pre_sql = 'SELECT name FROM daw_plugins WHERE name = "'.$_POST['name'].'"';
 		$pre_stmt = $this->_db->prepare($pre_sql);
 		$pre_stmt->execute();
 		$result = $pre_stmt->fetch();
@@ -58,21 +58,15 @@ class Model {
 
 		} else {
 			//重複がなければ単語を登録
-			$sql = 'INSERT INTO words (word, part_of_speach,japanese,part_of_speach2,japanese2,category,memo,next_date,correct,updated) VALUES (:word, :part_of_speach, :japanese, :part_of_speach2, :japanese2, :category, :memo, :next_date, :correct, :updated)';
+			$sql = 'INSERT INTO daw_plugins (company,name,category,memo) VALUES (:company, :name, :category, :memo)';
 
 			$stmt = $this->_db->prepare($sql);
 
 			$stmt->execute([
-				':word' => $_POST['word'],
-				':part_of_speach' => $_POST['part_of_speach'],
-				':japanese' => $_POST['japanese'],
-				':part_of_speach2' => $_POST['part_of_speach2'],
-				':japanese2' => $_POST['japanese2'],
+				':company'  => $_POST['company'],
+				':name'     => $_POST['name'],
 				':category' => $_POST['category'],
-				':memo' => $_POST['memo'],
-				':next_date' => date('Y-m-d'),
-				':correct' => 0,
-				':updated' => date('Y-m-d')
+				':memo'     => $_POST['memo']
 			]);
 
 			$stmt = null;
@@ -86,26 +80,27 @@ class Model {
 	}
 
 	//単語修正
-	private function revision() {
-		$sql = 'UPDATE words SET word=:word, part_of_speach=:part_of_speach,japanese=:japanese,part_of_speach2=:part_of_speach2,japanese2=:japanese2,category=:category,memo=:memo WHERE id =:id';
-		// ,next_date=:next_date,correct=:correct 
+	private function edit() {
+
+		$sql = 'UPDATE daw_plugins SET company=:company, name=:name,category=:category,memo=:memo WHERE name=:nameForSQL';
 
 		$stmt = $this->_db->prepare($sql);
 
 		$stmt->execute([
-			':word' => $_POST['word'],
-			':part_of_speach' => $_POST['part_of_speach'],
-			':japanese' => $_POST['japanese'],
-			':part_of_speach2' => $_POST['part_of_speach2'],
-			':japanese2' => $_POST['japanese2'],
-			':category' => $_POST['category'],
-			':memo' => $_POST['memo'],
-			// ':next_date' => date('Y-m-d'),
-			// ':correct' => 0,
-			':id' => $_POST['wordId']
+			':company' 	  => $_POST['company'],
+			':name'       => $_POST['name'],
+			':category'   => $_POST['category'],
+			':memo'       => $_POST['memo'],
+			':nameForSQL' => $_POST['nameForSQL']
+			
 		]);
 
 		$stmt = null;
+		$_POST = array();
+		unset($_POST);
+		return [
+			'message' => '変更しました',
+			'msg' => 0
+		];
 	}
-
 }

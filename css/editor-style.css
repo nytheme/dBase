@@ -1,0 +1,15 @@
+/* ブロックエディター画面のCSS */
+
+body {
+    background: #222222 !important;
+}
+/* テキストカラー */
+div { 
+    color:rgb(161, 161, 161);
+}
+
+/* G-Translaterのボーダーカラー */
+.wp-block-create-block-gutenpride {
+    border: 1px dotted grey;
+}
+

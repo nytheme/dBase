@@ -7,3 +7,10 @@ function dbtable_Include($params = array()) {
     return ob_get_clean();
 }
 add_shortcode('dbtable', 'dbtable_Include');
+
+//GutenbergのブロックエディタにCSSを適用
+function custom_editor_settings() {
+    add_theme_support( 'editor-styles' );
+    add_editor_style('css/editor-style.css');
+}
+add_action('after_setup_theme', 'custom_editor_settings');
