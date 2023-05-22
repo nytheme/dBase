@@ -36,7 +36,7 @@
                 </tbody>
             </table>
 
-        <?php endif; ?>   
+    <?php endif; ?>   
 </section>
 
 <?php get_footer(); ?>

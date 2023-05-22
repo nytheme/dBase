@@ -245,7 +245,10 @@ $plugins = $dbtable->getAll();
                     onclick="editButton(event)"></a>
                 </td>
             </tr>
-        <?php endforeach; ?>    
+        <?php endforeach; ?>   
+        <tr> <!-- 最終段にボーダーラインとスペースをつくるため -->
+            <td></td><td></td><td></td><td></td><td></td>
+        </tr> 
     </tbody>
 </table>
 

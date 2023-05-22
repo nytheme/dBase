@@ -1,20 +1,20 @@
 <?php
     $parents = array(
-        'sort_order' => 'ASC',
-        'sort_column' => 'post_title',
+        'sort_order'   => 'ASC',
+        'sort_column'  => 'post_title',
         'hierarchical' => 1,
-        'exclude' => '',
-        'include' => '',
-        'meta_key' => '',
-        'meta_value' => '',
-        'authors' => '',
-        'child_of' => 0,
-        'parent' => 0,
+        'exclude'      => '',
+        'include'      => '',
+        'meta_key'     => '',
+        'meta_value'   => '',
+        'authors'      => '',
+        'child_of'     => 0,
+        'parent'       => 0,
         'exclude_tree' => '',
-        'number' => '',
-        'offset' => 0,
-        'post_type' => 'page',
-        'post_status' => 'publish'
+        'number'       => '',
+        'offset'       => 0,
+        'post_type'    => 'page',
+        'post_status'  => 'publish'
     ); 
     $parentPages = get_pages( $parents ); 
 ?>
@@ -41,14 +41,14 @@
                         <td>' . $option . '</td>
                         <td>';
                             $childes = array(
-                                'sort_order' => 'ASC',
-                                'sort_column' => 'post_title',
+                                'sort_order'   => 'ASC',
+                                'sort_column'  => 'post_title',
                                 'hierarchical' => 1,
-                                'child_of' => 0,
-                                'parent' => $parentPage->ID,
-                                'offset' => 0,
-                                'post_type' => 'page',
-                                'post_status' => 'publish'
+                                'child_of'     => 0,
+                                'parent'       => $parentPage->ID,
+                                'offset'       => 0,
+                                'post_type'    => 'page',
+                                'post_status'  => 'publish'
                             ); 
                             $childePages = get_pages( $childes ); 
 
@@ -62,6 +62,9 @@
                     </tr>';
             }
         ?>
+            <tr> <!-- 最終段にボーダーラインとスペースをつくるため -->
+                <td></td><td></td>
+            </tr>
         </tbody>
     </table>
 </section>

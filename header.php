@@ -9,10 +9,12 @@
     <title>dBase</title>
     
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/uikit-3.16.17/css/uikit.min.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/header_footer-style.css">
+    
     <script src="<?php echo get_template_directory_uri(); ?>/uikit-3.16.17/js/uikit.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/uikit-3.16.17/js/uikit-icons.min.js"></script>
 </head>
 <body class="" style="">
-    <header>
-
+    <header class="uk-container">
+    <?php custom_breadcrumb(); ?>
     </header>

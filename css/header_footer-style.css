@@ -1,0 +1,36 @@
+/* header */
+#breadcrumb ul {
+    display: flex;
+    list-style:none;
+    margin-top:10px;
+}
+
+#breadcrumb span {
+    margin-right:8px;
+}
+
+
+
+/* header ここまで*/
+/* footer */
+.position {
+    /* position: -webkit-sticky; */
+    position: fixed;
+    /*固定したい位置*/
+    bottom: 0;
+    right: 10%; 
+    width: 100%;
+
+    background-color:#222222;
+    opacity: 0.8;
+     display: flex;
+    justify-content: flex-end;
+    /* flex-direction: row-reverse; */
+}
+
+.position a {
+    padding: 10px 3% 10px 0 !important;
+
+}
+
+
