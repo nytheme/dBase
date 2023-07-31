@@ -1,5 +1,14 @@
 <?php
 //ショートコードを使ったphpファイルの呼び出し方法
+function ssad_Include($params = array()) {
+    extract(shortcode_atts(array('file' => 'default'), $params));
+    ob_start();
+    include(STYLESHEETPATH . "/shortcode/ssad/$file.php");
+    return ob_get_clean();
+}
+add_shortcode('ssad', 'ssad_Include');
+
+
 function dbtable_Include($params = array()) {
     extract(shortcode_atts(array('file' => 'default'), $params));
     ob_start();

@@ -1,0 +1,15 @@
+.header_link {
+    margin: 30px 0 10px 0 !important;
+}
+
+.day_selector {
+    display:flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.day_selector a {
+    padding-top: 2px; 
+}
+.day_selector h3 {
+    margin:0 10px 0 10px;
+}
